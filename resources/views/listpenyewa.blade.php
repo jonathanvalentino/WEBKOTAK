@@ -16,13 +16,12 @@
         </thead>
         <tbody>
             <!-- Mulai perulangan -->
-            <?php //$i=0; ?>
-            @for ($i = 0; $i < count($nama); $i++) <tr>
+            @for($i=0; $i<count($nama_tempat); $i++)<tr>
                 <th scope="row">
-                    <? $i+1; ?>
+                    <?= $i+1; ?>
                 </th>
-                <td>{{ $nama[$i] }}</td>
-                <td><a href=""></a></td>
+                <td>{{ $nama_tempat[$i] }}</td>
+                <td>{{ $nama_penyewa[$i] }}</td>
                 <td>
                     <button type="button" class="btn btn-success rounded-pill px-3 shd-blue me-2" data-bs-toggle="modal"
                         data-bs-target="#konfirmSewa">Konfirmasi</button>
@@ -77,7 +76,6 @@
                     </div>
                 </td>
                 </tr>
-                <?php //$i++; ?>
                 @endfor
         </tbody>
     </table>

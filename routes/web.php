@@ -27,6 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Ini rute untuk pemilik
 Route::get('/daftarpemilik', [App\Http\Controllers\Auth\RegisterController::class, 'pemilik'])->name('pemilik');
 Route::get('/penyewa', [App\Http\Controllers\PemilikController::class, 'listpenyewa'])->name('listpenyewa');
+
 //rute pemisah admin,pemilik,penyewa
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('index');
 Route::get('/pemilik', [App\Http\Controllers\PemilikController::class, 'index'])->name('index');
