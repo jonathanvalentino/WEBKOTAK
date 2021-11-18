@@ -37,7 +37,7 @@
                     @if(!empty($sw))
                     @if($sw->status_sewa=='1'&&$sw->status_bayar=='')
                     <button type="button" class="btn btn-primary rounded-pill px-3 shd-blue me-2" data-bs-toggle="modal"
-                        data-bs-target="#editModal<?=$i ?>">Bayar Sekarang</button>
+                        data-bs-target="#editModal1<?=$i ?>">Bayar Sekarang</button>
                     @elseif($sw->status_sewa=='1'&&$sw->status_bayar=='0')
                     Menunggu Konfirmasi Pembayaran
                     @elseif($sw->status_sewa=='1'&&$sw->status_bayar=='1')
@@ -49,7 +49,7 @@
                     @endif
                     @endif
                     <!-- Edit Modal -->
-                    <div class="modal fade" id="editModal<?=$i ?>" tabindex="-1" aria-labelledby="editModalLabel"
+                    <div class="modal fade" id="editModal1<?=$i ?>" tabindex="-1" aria-labelledby="editModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -82,10 +82,10 @@
                 <td>
                     @if($sw->status_sewa==''||$sw->status_sewa=='0')
                     <button type="button" class="btn btn-danger rounded-pill px-3 shd-blue me-2" data-bs-toggle="modal"
-                        data-bs-target="#editModal<?= $i ?>">Batal Sewa</button>
+                        data-bs-target="#editModal2<?= $i ?>">Batal Sewa</button>
 
                     <!-- Edit Modal -->
-                    <div class="modal fade" id="editModal<?= $i ?>">
+                    <div class="modal fade" id="editModal2<?= $i ?>">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -105,6 +105,8 @@
                             </div>
                         </div>
                     </div>
+                    @elseif($sw->status_bayar=='1')
+                    <p style="color:green">Diterima</p>
                     @else
                     Menunggu Konfirmasi
                     @endif
