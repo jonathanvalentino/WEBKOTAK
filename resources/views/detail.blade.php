@@ -70,7 +70,7 @@
                  @if($usr->id==$ktk->user_id)
                  <h2 class="mb-3"></h2>
                  <h4>
-                     <a><img src="/images/image-ft-1.png" height="50" class="me-3 mb-3" alt="" />{{ $usr->name }}</a>
+                     <a><img src="{{ $usr->foto }}" height="50" class="me-3 mb-3" alt="" />{{ $usr->name }}</a>
                  </h4>
                  <p>No Hp : {{ $usr->no_hp }}</p>
                  <p>Alamat : {{ $ktk->alamat }}</p>
@@ -119,8 +119,23 @@
              <div class="bg-color-g f-color my-5 p-4 rnd-box">
                  <h2>Informasi lainnya</h2>
                  <p>Kos ini dekat dengan fasilitas berikut:</p>
-                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque in nihil expedita atque, pariatur
-                     debitis omnis officia facilis eveniet repellat.</p>
+                 <p>@if($ktk->laundry == 'ada')
+                     Terdapat Laundry dekat dengan
+                     @if($ktk->jenis == 'kos')kos
+                     @else kontrakan
+                     @endif
+                     @else
+                     Tidak terdapat Laundry di sekitar
+                     @if($ktk->jenis == 'kos')kos
+                     @else kontrakan
+                     @endif
+                     @endif
+                     <br>
+                     Terdapat {{ $ktk->warung_makan }} warung makan di sekitar
+                     @if($ktk->jenis == 'kos')kos
+                     @else kontrakan
+                     @endif
+                 </p>
              </div>
              <!-- stop aside -->
          </div>

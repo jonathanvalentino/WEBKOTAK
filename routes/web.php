@@ -26,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Ini rute untuk pemilik
 Route::get('/daftarpemilik', [App\Http\Controllers\Auth\RegisterController::class, 'pemilik'])->name('pemilik');
-
+Route::get('/penyewa', [App\Http\Controllers\PemilikController::class, 'listpenyewa'])->name('listpenyewa');
 //rute pemisah admin,pemilik,penyewa
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('index');
 Route::get('/pemilik', [App\Http\Controllers\PemilikController::class, 'index'])->name('index');
@@ -34,7 +34,7 @@ Route::get('/pemilik', [App\Http\Controllers\PemilikController::class, 'index'])
 //rute navbar
 Route::get('/pencarian', [App\Http\Controllers\PencarianController::class, 'pencarian'])->name('pencarian');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
-Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('index');
 Route::get('/sewaku', [App\Http\Controllers\HomeController::class, 'sewaku'])->name('sewaku');
 Route::get('/FAQ', [App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
 
@@ -43,3 +43,10 @@ Route::get('/detail', [App\Http\Controllers\PencarianController::class, 'detail'
 Route::get('/details/{id}', [App\Http\Controllers\SewaController::class, 'sewa'])->name('sewa');
 Route::get('/bayar/{id}', [App\Http\Controllers\SewaController::class, 'bayar'])->name('bayar');
 Route::get('/hapus/{id}', [App\Http\Controllers\SewaController::class, 'hapus'])->name('hapus');
+
+//rute profile
+Route::post('/ubahsandi', [App\Http\Controllers\ProfileController::class, 'ubahsandi'])->name('ubahsandi');
+Route::post('/ubahprofil', [App\Http\Controllers\ProfileController::class, 'ubahprofil'])->name('ubahprofil');
+
+//rute pemilik
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');

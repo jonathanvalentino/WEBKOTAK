@@ -37,7 +37,7 @@
                     @if(!empty($sw))
                     @if($sw->status_sewa=='1'&&$sw->status_bayar=='')
                     <button type="button" class="btn btn-primary rounded-pill px-3 shd-blue me-2" data-bs-toggle="modal"
-                        data-bs-target="#editModal">Bayar Sekarang</button>
+                        data-bs-target="#editModal<?=$i ?>">Bayar Sekarang</button>
                     @elseif($sw->status_sewa=='1'&&$sw->status_bayar=='0')
                     Menunggu Konfirmasi Pembayaran
                     @elseif($sw->status_sewa=='1'&&$sw->status_bayar=='1')
@@ -49,7 +49,7 @@
                     @endif
                     @endif
                     <!-- Edit Modal -->
-                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
+                    <div class="modal fade" id="editModal<?=$i ?>" tabindex="-1" aria-labelledby="editModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
