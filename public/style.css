@@ -1,0 +1,201 @@
+* {
+    box-sizing: unset;
+}
+
+.homebutton {
+    position: absolute;
+    top: 50%;
+}
+
+.py-6 {
+    padding: 6rem 0;
+}
+
+.py-7 {
+    padding: 7rem 0;
+}
+
+.py-8 {
+    padding: 8rem 0;
+}
+
+.py-9 {
+    padding: 9rem 0;
+}
+
+.py-10 {
+    padding: 10rem 0;
+}
+
+.my-6 {
+    margin: 6rem 0;
+}
+
+.my-7 {
+    margin: 7rem 0;
+}
+
+.my-8 {
+    margin: 8rem 0;
+}
+
+.my-9 {
+    margin: 9rem 0;
+}
+
+.my-10 {
+    margin: 10rem 0;
+}
+
+.f-color-b {
+    color: #0166ff !important;
+}
+
+.f-color-w {
+    color: #ffffff !important;
+}
+
+.f-color {
+    color: #1e2931;
+}
+
+.bg-color-b {
+    background-color: #0166ff;
+}
+
+.bg-color-w {
+    background-color: #ffffff;
+}
+
+.bg-color-g {
+    background-color: #f8f8f8;
+}
+
+.bg-color-d {
+    background-color: #1e2931 !important;
+}
+
+.bdr-top {
+    border-top: 1px solid #0166ff;
+}
+
+.bg-image {
+    background-image: url("/images/image-bg-image.png");
+    background-size: cover;
+    width: 50%;
+    height: 100vh;
+}
+
+.parent-con {
+    width: 100vw;
+    height: 100vh;
+}
+
+.child-con {
+    width: 50vw;
+    height: 70vh;
+    background-color: white;
+}
+
+.bg-image-home {
+    background-image: url("/images/image-bg-home.png");
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+    position: relative;
+}
+
+.header-text {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+}
+
+.shd-blue {
+    box-shadow: 0 5px 15px 0 rgba(66, 133, 244, 0.4) !important;
+}
+
+.rnd-kanan {
+    border-radius: 0 20px 20px 0 !important;
+}
+
+.rnd-kiri {
+    border-radius: 20px 0 0 20px !important;
+    border: none;
+}
+
+.rnd-box {
+    border-radius: 20px !important;
+}
+
+.field {
+    border: none;
+    border-bottom: 1px solid #0166ff;
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+span {
+    display: block;
+    overflow: hidden;
+    padding-right: 10px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+.foto-kos {
+    background-image: url("/images/image-kontrakan-1.png");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+}
+
+.map-size {
+    width: 100%;
+    height: 500px;
+}
+
+.pp {
+    position: absolute;
+    height: 100px;
+}
+
+.editpp:hover {
+    position: relative;
+    background-image: url("/images/image-logokotak.png");
+    background-size: cover;
+    width: 100%;
+    height: 100px;
+}
+
+.container-profilepic {
+    width: 100px;
+    height: 100px;
+}
+
+.photo-preview {
+    background-image: url("/images/image-ft-1.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.middle-profilepic {
+    background-color: rgba(255, 255, 255, 0.69);
+}
+
+.container-profilepic:hover .middle-profilepic {
+    display: flex !important;
+    cursor: pointer;
+}
+
+.homebut {
+    position: absolute;
+    top: 5%;
+    padding: 0;
+}
