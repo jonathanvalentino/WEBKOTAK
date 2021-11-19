@@ -7,7 +7,8 @@
                 <!-- <img src="./images/image-ft-1.png" class="pp" alt="" />
                         <a class="editpp" href="">aaaaaa</a> -->
                 <div class="container-profilepic card rounded-circle overflow-hidden">
-                    <div class="photo-preview card-img w-100 h-100"></div>
+                    <div class="card-img w-100 h-100"><img src="/fotoprofil/{{ $user->foto }}" class="pp" alt="" />
+                    </div>
                     <div
                         class="middle-profilepic text-center card-img-overlay d-none flex-column justify-content-center">
                         <div class="text-profilepic">
@@ -29,7 +30,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="{{ url('ubahfoto') }}">
+                            <form method="POST" action="{{ url('ubahfoto') }}" enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" class="form-control" id="customFile" name="gambar" />
                         </div>

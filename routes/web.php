@@ -52,5 +52,6 @@ Route::get('/hapus/{id}', [App\Http\Controllers\SewaController::class, 'hapus'])
 //rute profile
 Route::post('/ubahsandi', [App\Http\Controllers\ProfileController::class, 'ubahsandi'])->name('ubahsandi');
 Route::post('/ubahprofil', [App\Http\Controllers\ProfileController::class, 'ubahprofil'])->name('ubahprofil');
+Route::post('/ubahfoto', [App\Http\Controllers\ProfileController::class, 'ubahfoto'])->name('ubahfoto');
 
 

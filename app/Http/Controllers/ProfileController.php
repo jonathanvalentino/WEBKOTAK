@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Sewa;
 use App\Models\Kosntrak;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -48,5 +50,29 @@ class ProfileController extends Controller
         $user->update();
         alert()->success('Profil berhasil diganti', 'Sukses');
         return view('profile',compact('user'));
+    }
+
+    public function ubahfoto(Request $request)
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+        if($user->foto != "fotodefault.png"){
+            File::delete(public_path('fotoprofil/'.$user->foto));
+            }
+
+        return Validator::make($request, [
+            'gamar' => ['required', 'unique:users'],
+        ]);
+
+        $file = $request->file('gambar');
+        $gambarupload = $file->getClientOriginalName();
+        $file->move(\base_path() ."/public/fotoprofil", $gambarupload);
+        if(!empty($request))
+    	{   
+    		$user->foto = $gambarupload;
+    	}
+        $user->update();
+
+        alert()->success('Foto profil berhasil diganti', 'Sukses');
+        return redirect('profile');
     }
 }

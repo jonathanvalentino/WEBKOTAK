@@ -180,7 +180,6 @@ select:focus {
 }
 
 .photo-preview {
-    background-image: url("/images/image-ft-1.png");
     background-size: cover;
     background-position: center;
 }
