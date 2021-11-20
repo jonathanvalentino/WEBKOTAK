@@ -8,6 +8,7 @@ use App\Models\Sewa;
 use App\Models\Kosntrak;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class PemilikController extends Controller
 {
@@ -15,7 +16,11 @@ class PemilikController extends Controller
     {
         $user = User::where('id', Auth::user()->id)->first();
         if($user->hasRole('pemilik')){
-            return view('homepemilik');
+            $kosntrak = Kosntrak::where('user_id', Auth::user()->id)->get();
+           return view('homepemilik',
+            [
+                "kosntrak" => $kosntrak,
+            ]);
         }
         else{
             return redirect('home');
@@ -59,35 +64,44 @@ class PemilikController extends Controller
                 }
             }
             
+            if(!empty($nama_tempat)){
             $i=0;
             foreach($nama_tempat as $nmtmpt){
                 $tempatfix[$i] = $nmtmpt;
                 $i++;
             }
+        
 
             $i=0;
             foreach($userr as $usr){
                 $userfix[$i] = $usr;
                 $i++;
             }
+        
 
             $i=0;
             foreach($id_sewa as $id){
                 $id_sewa[$i] = $id;
                 $i++;
             }
+        
 
             $i=0;
             foreach($statbayar as $sb){
                 $bayarfix[$i] = $sb;
                 $i++;
             }
-
+            
+            
         return view('listpenyewa', 
         ["nama_tempat"=> $tempatfix,
          "nama_penyewa"=> $userfix,
          "id_sewa"=> $id_sewa,
          "bayarfix"=> $bayarfix,]);
+            }
+        else{
+            return view('listpenyewa');
+        }
     }
 
     public function konfirmasi(Request $rq){
@@ -124,6 +138,10 @@ class PemilikController extends Controller
 
     public function updatebayar($id){
         $update = Carbon::now()->toDateTimeString();
+        $sewa = Sewa::where('id',$id)->first();
+        $kosntrak_id = $sewa->kosntrak_id;
+        DB::table('kosntrak')->where('id', $kosntrak_id)->where('jenis', 'kos')->decrement("status_kamar");
+        
         DB::table('sewa')->where('id', $id)->update(
             [
                 'status_bayar'=> '1',
@@ -131,6 +149,144 @@ class PemilikController extends Controller
             ]
             );
         return redirect('penyewa');
+    }
+
+    public function posting()
+    {
+        // $user = User::where('id', Auth::user()->id)->first();
+        // if(empty($user->rekening))
+        // {
+        //     alert()->error('Harap mengisi nomor rekening sebelum memposting kos  / kontrakan', 'Maaf');
+        //     return redirect('profile');
+        // } else
+        // {
+            return view('posting');
+        // }
+    }
+
+    public function postingkos()
+    {
+        //return view ke halaman form posting crud
+        return view('postingkos');
+    }
+
+    public function postingkontrakan()
+    {
+        //return view ke halaman form posting crud
+        return view('postingkontrakan');
+    }
+
+    public function tambahkos(Request $req) {
+        $create = Carbon::now()->toDateTimeString();
+        $update = Carbon::now()->toDateTimeString();
+        $user = User::where('id', Auth::user()->id)->first();
+		$file = $req->file('gambar');
+        $gambarupload = $req->fnama_tempat . '.png';
+        $file->move(\base_path() ."/public/images", $gambarupload);
+
+        //insert ke database
+        DB::table('kosntrak')->insert(
+            [
+                'gambar' => $gambarupload,
+                'jenis' => $req->fjenis,
+                'user_id' => $user->id,
+                'nama_tempat' => $req->fnama_tempat,
+                'keterangan' => $req->fketerangan,
+                'status_kamar' => $req->fstatus_kamar,
+                'wifi' => $req->fwifi,
+                'status_kamarmandi' => $req->fstatus_kamarmandi,
+                'peraturan' => $req->fperaturan,
+                'alamat' => $req->falamat,
+                'warung_makan' => $req->fwarung_makan,
+                'laundry' => $req->flaundry,
+                'harga_sewa' => $req->fharga,
+                'created_at' => $create,
+                'updated_at' => $update
+            ]
+        );
+        //alert()->success('Postingan berhasil ditambahkan', 'Sukses');
+        return redirect('pemilik');
+    }
+
+    public function tambahkontrakan(Request $req) {
+        $create = Carbon::now()->toDateTimeString();
+        $update = Carbon::now()->toDateTimeString();
+        $user = User::where('id', Auth::user()->id)->first();
+		$file = $req->file('gambar');
+        $gambarupload = $req->fnama_tempat . '.png';
+        $file->move(\base_path() ."/public/images", $gambarupload);
+
+        //insert ke database
+        DB::table('kosntrak')->insert(
+            [
+                'gambar' => $gambarupload,
+                'jenis' => $req->fjenis,
+                'user_id' => $user->id,
+                'nama_tempat' => $req->fnama_tempat,
+                'keterangan' => $req->fketerangan,
+                'status_kamar' => $req->fstatus_kamar,
+                'wifi' => $req->fwifi,
+                'status_kamarmandi' => $req->fstatus_kamarmandi,
+                'peraturan' => $req->fperaturan,
+                'alamat' => $req->falamat,
+                'warung_makan' => $req->fwarung_makan,
+                'laundry' => $req->flaundry,
+                'harga_sewa' => $req->fharga,
+                'created_at' => $create,
+                'updated_at' => $update
+            ]
+        );
+        //alert()->success('Postingan berhasil ditambahkan', 'Sukses');
+        return redirect('pemilik');
+    }
+
+    public function tampiledit() {
+        $id = request('id');
+        $postedit = Kosntrak::where('id', $id)->first();
+        return view('postingedit',["update" => $postedit]);
+    }
+    
+
+    public function updateposting(Request $req) {
+        $create = Carbon::now()->toDateTimeString();
+        $update = Carbon::now()->toDateTimeString();
+        $user = User::where('id', Auth::user()->id)->first();
+        
+        if(!empty($req->file('gambar'))) {
+            $file = $req->file('gambar');
+            $gambarupload = $req->fnama_tempat . '.png';
+            $file->move(\base_path() ."/public/images", $gambarupload);
+        }
+        
+        $kosntrak = Kosntrak::where('id', $req->id)->first();
+        if(!empty($req)) {
+            if(!empty($gambarupload)) {
+                $kosntrak->gambar = $gambarupload;
+            }
+            $kosntrak->jenis = $req->fjenis;
+            $kosntrak->user_id = $user->id;
+            $kosntrak->nama_tempat = $req->fnama_tempat;
+            $kosntrak->keterangan = $req->fketerangan;
+            $kosntrak->status_kamar = $req->fstatus_kamar;
+            $kosntrak->wifi = $req->fwifi;
+            $kosntrak->status_kamarmandi = $req->fstatus_kamarmandi;
+            $kosntrak->peraturan = $req->fperaturan;
+            $kosntrak->alamat = $req->falamat;
+            $kosntrak->warung_makan = $req->fwarung_makan;
+            $kosntrak->laundry = $req->flaundry;
+            $kosntrak->harga_sewa = $req->fharga;
+            $kosntrak->created_at = $create;
+            $kosntrak->updated_at = $update;
+        }
+        $kosntrak->update();
+        return redirect('pemilik');
+    }
+
+    public function deletekosntrak($id) {
+        $kosntrak = Kosntrak::where('id', $id)->first();
+        File::delete(public_path('images/'. $kosntrak->gambar));
+        DB::table('kosntrak')->where('id', $id)->delete();
+        return redirect('pemilik');
     }
 
 }

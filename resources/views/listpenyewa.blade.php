@@ -5,6 +5,7 @@
         <h2>Daftar Penyewa</h2>
         <p>Halaman ini digunakan untuk mengelola penyewa kos dan kontrakanmu yang ada di website Kotak.</p>
         <br />
+        @if(!empty($nama_tempat))
         <thead>
             <tr>
                 <th scope="col">No</th>
@@ -27,16 +28,22 @@
                         <input type="hidden" value="{{ $id_sewa[$i] }}" name="idsewa">
                         <input type="hidden" value="{{ $nama_tempat[$i] }}" name="namatempat">
                         <input type="hidden" value="{{ $nama_penyewa[$i] }}" name="namapenyewa">
-                        @if($bayarfix == !'1')
+                        @if($bayarfix[$i] == '1')
+                        <button type="submit" class="btn btn-secondary disabled rounded-pill px-3 me-2">Selesai</button>
+                        @else
                         <button type="submit"
                             class="btn btn-success rounded-pill px-3 shd-blue me-2">Konfirmasi</button>
-                        @else
-                        <button type="submit" class="btn btn-secondary disabled rounded-pill px-3 me-2">Selesai</button>
                         @endif
                     </form>
                 </td>
                 </tr>
                 @endfor
+                @else
+                < <h3>
+                    Kosong
+                    </h3>
+                    <p>Belum ada penyewa yang ingin menyewa kos / kontrakan anda</p>
+                    @endif
         </tbody>
     </table>
 </div>

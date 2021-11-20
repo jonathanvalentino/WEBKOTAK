@@ -31,6 +31,14 @@ Route::post('/konfirmasi', [App\Http\Controllers\PemilikController::class, 'konf
 Route::get('/updatesewatolak/{id}', [App\Http\Controllers\PemilikController::class, 'updatesewatolak'])->name('updatesewatolak');
 Route::get('/updatesewaterima/{id}', [App\Http\Controllers\PemilikController::class, 'updatesewaterima'])->name('updatesewaterima');
 Route::get('/updatebayar/{id}', [App\Http\Controllers\PemilikController::class, 'updatebayar'])->name('updatebayar');
+Route::get('/formposting', [App\Http\Controllers\PemilikController::class, 'posting'])->name('posting');
+Route::get('/formpostingkos', [App\Http\Controllers\PemilikController::class, 'postingkos'])->name('postingkos');
+Route::post('/formtambahkos', [App\Http\Controllers\PemilikController::class, 'tambahkos'])->name('tambahkos');
+Route::get('/formpostingkontrakan', [App\Http\Controllers\PemilikController::class, 'postingkontrakan'])->name('postingkontrakan');
+Route::post('/formtambahkontrakan', [App\Http\Controllers\PemilikController::class, 'tambahkontrakan'])->name('tambahkontrakan');
+Route::get('/editposting', [App\Http\Controllers\PemilikController::class, 'tampiledit'])->name('tampiledit');
+Route::post('/proseseditposting', [App\Http\Controllers\PemilikController::class, 'updateposting'])->name('updateposting');
+Route::get('/deletekosntrak/{id}', [App\Http\Controllers\PemilikController::class, 'deletekosntrak'])->name('deletekosntrak');
 
 //rute pemisah admin,pemilik,penyewa
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('index');

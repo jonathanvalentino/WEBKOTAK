@@ -82,25 +82,27 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
                     <div class="h-100">
-                        <img src="./images/image-ft-1.png" height="200px" />
+                        <img class="rounded-pill" src="/images/ramantya.png" height="200px" />
                         <div class="card-body">
-                            <h5 class="card-title">Ivan Andika Surya</h5>
-                            <p class="card-text">"Mantap, sangat membantu untuk mencari kos di Kota Salatiga!"</p>
+                            <h5 class="card-title">Ramantya Dwiangga</h5>
+                            <p class="card-text">"Penggunaan web ini membantu saya dalam menemukan kos dalam cara
+                                yang lebih mudah dan menarik"</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="h-100">
-                        <img src="./images/image-ft-1.png" height="200px" />
+                        <img class="rounded-pill" src="/images/ropan.png" height="200px" />
                         <div class="card-body">
-                            <h5 class="card-title">Ivan Andika Surya</h5>
-                            <p class="card-text">"Mantap, sangat membantu untuk mencari kos di Kota Salatiga!"</p>
+                            <h5 class="card-title">Rovan Junio</h5>
+                            <p class="card-text">"Web ini sangat mudah dipahami dan membantu saya dalam mencari
+                                informasi mengenai kos dan fasilitas penunjang di sekitar kos"</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="h-100">
-                        <img src="./images/image-ft-1.png" height="200px" />
+                        <img class="rounded-pill" src="./images/image-ft-1.png" height="200px" />
                         <div class="card-body">
                             <h5 class="card-title">Ivan Andika Surya</h5>
                             <p class="card-text">"Mantap, sangat membantu untuk mencari kos di Kota Salatiga!"</p>

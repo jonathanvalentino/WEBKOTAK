@@ -3,14 +3,17 @@
 
  <body class="f-color">
      <!-- start section 1 -->
-     <div class="container-fluid text-center d-flex justify-content-center py-4">
+     <div class="container-fluid text-center d-flex justify-content-center py-5 bg-color-g">
          <div class="col-md-5">
              <div class="d-flex flex-row shd-blue rounded-pill">
                  <div class="col-md-10">
-                     <input type="text" class="w-100 h-100 rnd-kiri ps-3" placeholder="Cari sesuatu disini" />
+                     <form action="{{ url('pencarian') }}">
+                         <input type="text" class="w-100 h-100 rnd-kiri ps-3 mt-2 bg-color-g"
+                             placeholder="Cari sesuatu disini" name="search" />
                  </div>
-                 <a class="btn btn-primary rnd-kanan px-3 w-100" href="#" role="button">Cari</a>
+                 <button class="btn btn-primary rnd-kanan px-3 w-100" type="submit">Cari</button>
              </div>
+             </form>
          </div>
      </div>
      <!-- stop section 1 -->
@@ -70,7 +73,7 @@
                  @if($usr->id==$ktk->user_id)
                  <h2 class="mb-3"></h2>
                  <h4>
-                     <a><img src="{{ $usr->foto }}" height="50" class="me-3 mb-3" alt="" />{{ $usr->name }}</a>
+                     <a><img src="/fotoprofil/{{ $usr->foto }}" height="50" class="me-3" alt="" />{{ $usr->name }}</a>
                  </h4>
                  <p>No Hp : {{ $usr->no_hp }}</p>
                  <p>Alamat : {{ $ktk->alamat }}</p>
@@ -86,7 +89,7 @@
                  <h2>Tertarik?</h2>
                  <p>Kamu dapat menyewa kos ini dengan harga berikut.</p>
                  <div class="d-flex">
-                     <h2>{{ number_format($ktk->harga_sewa) }}</h2>
+                     <h2>Rp. {{ number_format($ktk->harga_sewa) }}</h2>
                      <p style="line-height: 300%">/bulan</p>
                  </div>
                  <button type="button" class="btn btn-outline-light rounded-pill px-3 shd-blue me-2"
@@ -98,7 +101,7 @@
                      <div class="modal-dialog f-color">
                          <div class="modal-content">
                              <div class="modal-header">
-                                 <h5 class="modal-title" id="konfirmBayarLabel">Konfirmasi Status Bayar</h5>
+                                 <h5 class="modal-title" id="konfirmBayarLabel">Konfirmasi Penyewaan</h5>
                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
                                      aria-label="Close"></button>
                              </div>

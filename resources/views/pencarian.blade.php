@@ -79,6 +79,7 @@
 <div class="container mb-5">
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($kosntrak as $ktk)
+        @if($ktk->status_kamar != '0')
         <div class="col">
             <div class="card h-100">
                 <img src="{{ url('images') }}/{{ $ktk->gambar }}" class="card-img-top" alt="..." />
@@ -98,6 +99,7 @@
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
     </div>
 </div>
